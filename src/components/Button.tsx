@@ -3,7 +3,7 @@ export { Button };
 interface ButtonProps {
     text: string;
     className: string;
-    onClick: MouseEvent;
+    onClick: MouseEvent ;
 }
 
 function Button({text, className, onClick} : ButtonProps){
