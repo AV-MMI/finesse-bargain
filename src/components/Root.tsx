@@ -15,8 +15,9 @@ function Root({}){
     
     return ( 
         <div className="min-h-screen">
-            <nav data-theme={ (isDark ? "dark" : "light") } className="max-h-[8vh] min-h-[8vh] flex items-center">
+            <nav data-theme={ (isDark ? "dark" : "light") } className="max-h-[10vh] min-h-[10vh] flex items-center">
                 <ul className="flex items-center w-full justify-around">
+                    <h1 className="text-orange-500 font-semibold">Finesse Bargain</h1>
                     <div className="siteNavigation flex space-x-2">
                         <li onClick={tabTracker} className={`font-semibold cursor-pointer`}><Link to={`/`} className={ (tab == "Home" ? "border-b-2 border-b-orange-500 hover:border-b-orange-600" : "") }>Home</Link></li>
                         <li onClick={tabTracker} className={`font-semibold cursor-pointer`}><Link to={`shop/`} className={ (tab == "Shop" ? "border-b-2 border-b-orange-500 hover:border-b-orange-600" : "") }>Shop</Link></li>
@@ -32,7 +33,7 @@ function Root({}){
                     </div>
                 </ul>
             </nav>
-            <main className="max-h-[92vh] min-h-[92vh] min-w-screen bg-cyan-200">
+            <main className="max-h-[90vh] min-h-[90vh] min-w-screen bg-cyan-200">
                 <Outlet />
             </main>
         </div>
