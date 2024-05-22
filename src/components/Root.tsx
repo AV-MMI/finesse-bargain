@@ -7,10 +7,10 @@ export { Root }
 function Root({}){
     let [isDark, darkTheme] = useState(false);
     let [tab, setTab] = useState("Home");
-    
+    console.log(tab, 'ws')
     const tabTracker = (e) => {
         setTab(e.target.textContent);
-        e.target.classList.add("border-b-orange-600")
+        
     }
     
     return ( 
@@ -18,9 +18,9 @@ function Root({}){
             <nav data-theme={ (isDark ? "dark" : "light") } className="max-h-[8vh] min-h-[8vh] flex items-center">
                 <ul className="flex items-center w-full justify-around">
                     <div className="siteNavigation flex space-x-2">
-                        <li onClick={tabTracker} className={`font-semibold cursor-pointer border-b-2 hover:border-b-orange-500`}><Link to={`/`}>Home</Link></li>
-                        <li onClick={tabTracker} className={`font-semibold cursor-pointer border-b-2 hover:border-b-orange-500`}><Link to={`shop/`}>Shop</Link></li>
-                        <li onClick={tabTracker} className={`font-semibold cursor-pointer border-b-2 hover:border-b-orange-500`}><Link to={`about/`}>About</Link></li>
+                        <li onClick={tabTracker} className={`font-semibold cursor-pointer`}><Link to={`/`} className={ (tab == "Home" ? "border-b-2 border-b-orange-500 hover:border-b-orange-600" : "") }>Home</Link></li>
+                        <li onClick={tabTracker} className={`font-semibold cursor-pointer`}><Link to={`shop/`} className={ (tab == "Shop" ? "border-b-2 border-b-orange-500 hover:border-b-orange-600" : "") }>Shop</Link></li>
+                        <li onClick={tabTracker} className={`font-semibold cursor-pointer`}><Link to={`about/`} className={ (tab == "About" ? "border-b-2 border-b-orange-500 hover:border-b-orange-600" : "") }>About</Link></li>
                     </div>
                     <div className="siteUtils flex space-x-2 items-center">
                         <li>
