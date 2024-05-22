@@ -5,7 +5,7 @@ import { Link, Outlet } from "react-router-dom";
 export { Root }
 
 function Root({}){
-    let [isDark, darkTheme] = useState(false);
+    let [isDark, setDarkTheme] = useState(false);
     let [tab, setTab] = useState("Home");
     console.log(tab, 'ws')
     const tabTracker = (e) => {
@@ -14,8 +14,8 @@ function Root({}){
     }
     
     return ( 
-        <div className="min-h-screen">
-            <nav data-theme={ (isDark ? "dark" : "light") } className="max-h-[10vh] min-h-[10vh] flex items-center">
+        <div className={"min-h-screen" + (isDark ? "dark" : "")} data-theme={(isDark ? "dark" : "light")}>
+            <nav className="max-h-[10vh] min-h-[10vh] flex items-center bg-color:">
                 <ul className="flex items-center w-full justify-around">
                     <h1 className="text-orange-500 font-semibold">Finesse Bargain</h1>
                     <div className="siteNavigation flex space-x-2">
@@ -28,7 +28,7 @@ function Root({}){
                             <Button text="Cart" className="text-cyan-300 hover:border-[#a2d3ff] hover:text-cyan-400 pl-5 pr-5 hover:bg-[#d5ebff] bg-[#EEF7FF] pt-1 pb-1" />
                         </li>
                         <li>
-                            <Button text={ (isDark ? "Light Theme" : "Dark Theme")}/>
+                            <Button disabled text={ (isDark ? "Light Theme" : "Dark Theme")}/>
                         </li>
                     </div>
                 </ul>
