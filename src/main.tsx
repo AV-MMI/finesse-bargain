@@ -8,14 +8,15 @@ import './index.css'
 import { Root } from './components/Root';
 import { Home } from './components/Home';
 import { About } from './components/About';
+import { ErrorPage } from './components/ErrorPage';
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <Root/>,
-    errorElement: <h1>Hi this is an error :(</h1>,
+    errorElement: <ErrorPage />,
     children : [
-      {index: true, element: <Home/>},
+      {index: true, element: <Home />},
       {
         path: "shop/",
         element: <h1>Shop</h1>,

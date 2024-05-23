@@ -13,7 +13,7 @@ describe('Root component', () => {
   it('render menu', () => {
     render(<Root />, {wrapper: BrowserRouter});
 
-    const navigationLinks: HTMLElement[] = screen.getAllByText(/(Home|Shop|About)/i);
+    const navigationLinks: HTMLElement[] = screen.getAllByRole("link");
     expect(navigationLinks.length).toBe(3);
   });
 
