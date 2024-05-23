@@ -7,6 +7,7 @@ import {
 import './index.css'
 import { Root } from './components/Root';
 import { Home } from './components/Home';
+import { About } from './components/About';
 
 const router = createBrowserRouter([
   {
@@ -44,7 +45,7 @@ const router = createBrowserRouter([
       },
       {
         path: "about/",
-        element: <h1>This is the about</h1>,
+        element: <About />,
       }
     ]
   },
