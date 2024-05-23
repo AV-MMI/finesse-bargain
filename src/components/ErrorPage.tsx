@@ -9,7 +9,7 @@ function ErrorPage({}) {
                 <h1 className="text-orange-500">Oops...!</h1>
                 <p className="">
                     Whoops! Looks like you've landed on a page that doesn't exist at Finesse Bargain.
-        Don't worry, we have plenty of treasures to discover, <Link to="/" className="text-orange-500">go home</Link>
+        Don't worry, we have plenty of treasures to discover, <Link to="/" className="border-b-2 border-b-orange-500 text-orange-500">go home</Link>
                 </p>
             </div>
         </div>

@@ -7,6 +7,7 @@ import {
 import './index.css'
 import { Root } from './components/Root';
 import { Home } from './components/Home';
+import { Shop } from './components/Shop';
 import { About } from './components/About';
 import { ErrorPage } from './components/ErrorPage';
 
@@ -19,7 +20,7 @@ const router = createBrowserRouter([
       {index: true, element: <Home />},
       {
         path: "shop/",
-        element: <h1>Shop</h1>,
+        element: <Shop />,
         errorElement: <h2>such category doesnt exist</h2>,
         children : [
           {
