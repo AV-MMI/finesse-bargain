@@ -8,7 +8,6 @@ function Shop({tab="A"}){
     const location = useLocation();
     const path = location.pathname.match(/(?<=\/shop\/)\w+/)[0];
     const [currTab, setTabs] = useState(path[0].toUpperCase());
-    console.log(currTab, '22')
 
     const tabTracker = (e) => {
         setTabs(e.target.textContent[0]);
