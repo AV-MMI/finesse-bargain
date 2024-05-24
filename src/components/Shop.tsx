@@ -8,7 +8,7 @@ function Shop({}){
     return (
         <div className="min-h-[90vh] bg-slate-500 pt-4 flex justify-center space-x-6">
             <div className="bg-[#F1F1F1] w-fit text-xl min-h-[80vh] max-h-[80vh]">
-                <ul className="flex flex-col min-h-[80vh] justify-around items-center p-3">
+                <ul data-testid="navMenu" className="flex flex-col min-h-[80vh] justify-around items-center p-3">
                     <li>
                         <Link to="/shop/electronics" className="hover:text-orange-400">Electronics</Link>
                     </li>
@@ -33,11 +33,11 @@ function Shop({}){
                     <span></span>
                 </div>
                 
-                <div className="bg-slate-200 min-w-[100%] max-w-[100%] h-[90%] flex p-4 justify-start flex-wrap overflow-y-scroll gap-4">
+                <div data-testid="productsDisplay" className="bg-slate-200 min-w-[100%] max-w-[100%] h-[90%] flex p-4 justify-start flex-wrap overflow-y-scroll gap-4">
                     <Card></Card>
                     <Card></Card>
                     <Card></Card>
-                    <Card></Card>
+                    <Card></Card> 
                     <Card></Card>
                 </div>
             </div>
