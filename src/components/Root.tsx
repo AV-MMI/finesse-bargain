@@ -8,9 +8,9 @@ function Root({}){
     let [isDark, setDarkTheme] = useState(false);
     let [tab, setTab] = useState("Home");
     console.log(tab, 'ws')
+        
     const tabTracker = (e) => {
         setTab(e.target.textContent);
-        
     }
     
     return ( 

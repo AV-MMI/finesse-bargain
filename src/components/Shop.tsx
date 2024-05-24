@@ -1,28 +1,34 @@
-import { Link } from "react-router-dom";
+import { useState } from "react";
+import { Link, useParams } from "react-router-dom";
 import { Card } from "./Card";
 
 export { Shop };
 
 function Shop({}){
+    const [tab, setTabs] = useState("A");
+    const handler = useParams();
+    const tabTracker = (e) => {
+        setTabs(e.target.textContent[0]);
+    }
 
     return (
         <div className="min-h-[90vh] bg-slate-500 pt-4 flex justify-center space-x-6">
             <div className="bg-[#F1F1F1] w-fit text-xl min-h-[80vh] max-h-[80vh]">
                 <ul data-testid="navMenu" className="flex flex-col min-h-[80vh] justify-around items-center p-3">
-                    <li>
-                        <Link to="/shop/electronics" className="hover:text-orange-400">Electronics</Link>
+                    <li onClick={tabTracker} className={(tab == "E" ? "border-b-2 border-b-orange-500 hover:border-b-orange-600" : "")}>
+                        <Link to="/shop/electronics" className={"hover:text-orange-400"}>Electronics</Link>
                     </li>
-                    <li>
-                        <Link to="/shop/jewelry" className="hover:text-orange-400">Jewelry</Link>
+                    <li onClick={tabTracker} className={(tab == "J" ? "border-b-2 border-b-orange-500 hover:border-b-orange-600" : "")}>
+                        <Link to="/shop/jewelry" className={"hover:text-orange-400"}>Jewelry</Link>
                     </li>
-                    <li>
-                        <Link to="/shop/mens-clothing" className="hover:text-orange-400">Men's Clothing</Link>
+                    <li onClick={tabTracker} className={(tab == "M" ? "border-b-2 border-b-orange-500 hover:border-b-orange-600" : "")}>
+                        <Link to="/shop/mens-clothing" className={"hover:text-orange-400"}>Men's Clothing</Link>
                     </li>
-                    <li>
-                        <Link to="/shop/womens-clothing" className="hover:text-orange-400">Women's Clothing</Link>
+                    <li onClick={tabTracker} className={(tab == "W" ? "border-b-2 border-b-orange-500 hover:border-b-orange-600" : "")}>
+                        <Link to="/shop/womens-clothing" className={"hover:text-orange-400"}>Women's Clothing</Link>
                     </li>
-                    <li>
-                        <Link to="/shop/" className="hover:text-orange-400">All</Link>
+                    <li onClick={tabTracker} className={(tab == "A" ? "border-b-2 border-b-orange-500 hover:border-b-orange-600" : "")}>
+                        <Link to="/shop/" className={"hover:text-orange-400"}>All</Link>
                     </li>
                 </ul>
             </div>
