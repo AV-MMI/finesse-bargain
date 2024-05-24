@@ -7,7 +7,7 @@ function Home({}){
             <div className="flex flex-col space-y-4">
                 <div className="flex flex-row space-x-4">
                     <div className="size-52 border-2 bg-white flex justify-center items-center font-semibold text-xl">
-                        <Link to="/shop/electronics"><h2>Electronics</h2></Link>
+                        <Link to="/shop/electronics" state={{tab: "E"}}><h2>Electronics</h2></Link>
                     </div>
                     <div className="size-52 border-2 bg-white flex justify-center items-center font-semibold text-xl">
                         <Link to="/shop/jewelry"><h2>Jewelry</h2></Link>
