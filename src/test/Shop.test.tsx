@@ -1,5 +1,5 @@
 import { render, screen } from "@testing-library/react";
-import { expect, afterEach, describe } from 'vitest';
+import { expect, describe } from 'vitest';
 import { Shop } from "../components/Shop.tsx";
 import { describe, it, expect } from 'vitest';
 import '@testing-library/jest-dom';
