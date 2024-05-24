@@ -33,7 +33,11 @@ function Shop({}){
                     <span></span>
                 </div>
                 
-                <div className="bg-slate-200 w-[95%] h-[90%]">
+                <div className="bg-slate-200 min-w-[100%] max-w-[100%] h-[90%] flex p-4 justify-start flex-wrap overflow-y-scroll gap-4">
+                    <Card></Card>
+                    <Card></Card>
+                    <Card></Card>
+                    <Card></Card>
                     <Card></Card>
                 </div>
             </div>
