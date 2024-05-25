@@ -1,13 +1,21 @@
-import { useState } from "react";
-import { Link, useLocation } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { Link, useLocation, Outlet } from "react-router-dom";
+
 import { Card } from "./Card";
 
 export { Shop };
 
-function Shop({tab="A"}){
+function Shop({tab="all"}){
     const location = useLocation();
-    const path = location.pathname.match(/(?<=\/shop\/)\w+/)[0];
+    const path = (location.pathname.match(/(?<=\/shop\/)\w+/) ? location.pathname.match(/(?<=\/shop\/)\w+/)[0] : tab);
     const [currTab, setTabs] = useState(path[0].toUpperCase());
+    const [data, setData] = useState([]);
+
+    useEffect(()=>{
+        fetch('https://fakestoreapi.com/products')
+            .then(res=>res.json())
+            .then(json=>console.log(json))
+    }, [currTab])
 
     const tabTracker = (e) => {
         setTabs(e.target.textContent[0]);
@@ -42,11 +50,7 @@ function Shop({tab="A"}){
                 </div>
                 
                 <div data-testid="productsDisplay" className="bg-slate-200 min-w-[100%] max-w-[100%] h-[90%] flex p-4 justify-start flex-wrap overflow-y-scroll gap-4">
-                    <Card></Card>
-                    <Card></Card>
-                    <Card></Card>
-                    <Card></Card> 
-                    <Card></Card>
+                    <Outlet />
                 </div>
             </div>
         </div>

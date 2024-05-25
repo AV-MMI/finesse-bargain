@@ -19,29 +19,28 @@ const router = createBrowserRouter([
     children : [
       {index: true, element: <Home />},
       {
-        path: "shop/",
+        path: "/shop/",
         element: <Shop />,
-        errorElement: <h2>such category doesnt exist</h2>,
         children : [
           {
-          path: "electronics/",
-          element: <h1>Pending</h1>,
-          errorElement: <h1>Error Pending</h1>,
+            index: true, 
+            element: <h2>TestAAA </h2>,
+          },
+          {
+            path: "electronics/",
+            element: <h1>Pending</h1>,
           },
           {
             path: "jewelry/",
             element: <h1>Pending</h1>,
-            errorElement: <h1>Pending Error</h1>,
           },
           {
             path: "mens-clothing",
             element: <h1>Pending</h1>,
-            errorElement: <h1>Pending Error</h1>,
           },
           {
             path: "womens-clothing",
             element: <h1>Pending</h1>,
-            errorElement: <h1>Pending Error</h1>,
           },
         ]
       },
