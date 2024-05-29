@@ -1,6 +1,8 @@
 import { Fragment, useState } from "react";
 import { Button } from "./Button";
 import { Link, Outlet } from "react-router-dom";
+import { CartModal } from "./CartModal";
+
 
 export { Root }
 
@@ -24,7 +26,8 @@ function Root({}){
                     </div>
                     <div className="siteUtils flex space-x-2 items-center">
                         <li>
-                            <Button text="Cart" className="text-cyan-300 hover:border-[#a2d3ff] hover:text-cyan-400 pl-5 pr-5 hover:bg-[#d5ebff] bg-[#EEF7FF] pt-1 pb-1" />
+                            <Button text="Cart" onClick={()=>document.getElementById('my_modal_1').showModal()} className="text-cyan-300 hover:border-[#a2d3ff] hover:text-cyan-400 pl-5 pr-5 hover:bg-[#d5ebff] bg-[#EEF7FF] pt-1 pb-1" />
+                            <CartModal></CartModal>
                         </li>
                         <li>
                             <Button disabled text={ (isDark ? "Light Theme" : "Dark Theme")}/>

@@ -9,7 +9,6 @@ function Shop({}){
     const location = useLocation();
     const currTab = (location.state ? location.state.tab : "all");
     const [limit, setLimit] = useState("4");
-
     
     const handleLimitOpt = (e) => {
         setLimit(e.target.value);
@@ -41,14 +40,14 @@ function Shop({}){
                 <div className="flex items-center w-36">
                     <h2 className="text-center font-semibold text-xl">Shop</h2>
                     <Select name="limitOptions">
-                        <option onClick={handleLimitOpt} defaultValue={4} selected>4</option>
+                        <option onClick={handleLimitOpt} defaultValue={4}>4</option>
                         <option onClick={handleLimitOpt} defaultValue={8}>8</option>
                         <option onClick={handleLimitOpt} defaultValue={12}>12</option>
                         <option onClick={handleLimitOpt} defaultValue={16}>16</option>
                     </Select>
                 </div>
                 <div data-testid="productsDisplay" className=" bg-slate-200 min-w-[100%] max-w-[100%] h-[90%]">
-                    <Outlet context={[limit, currTab]} />
+                    <Outlet context={[limit, currTab, setProducts]} />
                 </div>
             </div>
         </div>

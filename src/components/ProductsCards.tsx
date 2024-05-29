@@ -5,7 +5,8 @@ export { ProductsCards };
 
 function ProductsCards({}){
     const [limit, currTab] = useOutletContext();
-    const [data, setData] = useState([]);
+    const [data, setData] = useState(null);
+    const [error, setError] = useState(null);
 
     const fetchProducts = async (url, limit=false, category=false) => {
         try {
@@ -14,7 +15,7 @@ function ProductsCards({}){
             setData(data);
             
         } catch (error) {
-            console.log(error, 'error')
+            setError(error.message);
         }
     } 
 
@@ -36,7 +37,12 @@ function ProductsCards({}){
     return (
         <div className="flex p-4 justify-start flex-wrap overflow-y-scroll gap-4 h-full">
             {
-                data.map((obj) => <Card key={obj.id} id={obj.id} title={obj.title} img={obj.image} price={obj.price} quantity={1} /> )
+                data &&
+                data.map((obj) => <Card key={obj.id} id={obj.id} title={obj.title} img={obj.image} price={obj.price} quantity={1} />)
+            }
+            {
+                error &&
+                <h2 className="text-2xl text-red-500">{error} Try later!</h2>
             }
         </div>
         );
