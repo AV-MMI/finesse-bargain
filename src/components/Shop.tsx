@@ -47,7 +47,7 @@ function Shop({}){
                     </Select>
                 </div>
                 <div data-testid="productsDisplay" className=" bg-slate-200 min-w-[100%] max-w-[100%] h-[90%]">
-                    <Outlet context={[limit, currTab, setProducts]} />
+                    <Outlet context={[limit, currTab]} />
                 </div>
             </div>
         </div>
