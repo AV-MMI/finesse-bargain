@@ -12,7 +12,13 @@ describe("Select Component", () => {
                         <option >16</option>
                     ];
     it("render component", () => {
-        render( <Select optionsArr={optsArr} /> )
-        expect(screen.getByText(1)).toMatch(1)
+        render(
+            <Select>
+                <option selected>4</option>
+                <option >8</option>
+                <option >12</option>
+                <option >16</option> 
+            </Select> )
+        expect(screen.getByText("4").textContent).toMatch("4")
     })
 })

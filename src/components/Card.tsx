@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { Button } from "./Button"
 export { Card }
 
-function Card({img, title="shoes", price=100, quantity=1, className=""}){
+function Card({id, img, title="shoes", price=100, quantity=1, className=""}){
     const [quant, setQuant] = useState(quantity);
 
     const incrementQuant = (e) => {
@@ -18,8 +18,8 @@ function Card({img, title="shoes", price=100, quantity=1, className=""}){
     }
 
     return(
-        <div className={"card card-compact w-60 h-fit bg-base-100 shadow-xl" + className}>
-            <img src="https://i.pravatar.cc/" alt="" />
+        <div id={id} className={"card card-compact w-60 h-fit bg-base-100 shadow-xl" + className}>
+            <img src={img} alt={`${title} image`} />
               <div className="card-body flex flex-col items-center">
                     <div className="flex items-center justify-around gap-4">
                         <h2 className="card-title justify-center">{title}</h2>

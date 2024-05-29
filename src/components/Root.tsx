@@ -19,7 +19,7 @@ function Root({}){
                     <h1 className="text-orange-500 font-semibold">Finesse Bargain</h1>
                     <div className="siteNavigation flex space-x-2">
                         <li onClick={tabTracker} className={`font-semibold cursor-pointer`}><Link to={`/`} className={ (tab == "Home" ? "border-b-2 border-b-orange-500 hover:border-b-orange-600" : "") }>Home</Link></li>
-                        <li onClick={tabTracker} className={`font-semibold cursor-pointer`}><Link to={`/shop/`} className={ (tab == "Shop" ? "border-b-2 border-b-orange-500 hover:border-b-orange-600" : "") }>Shop</Link></li>
+                        <li onClick={tabTracker} className={`font-semibold cursor-pointer`}><Link to={`/shop/`} state={{tab: "all"}}className={ (tab == "Shop" ? "border-b-2 border-b-orange-500 hover:border-b-orange-600" : "") }>Shop</Link></li>
                         <li onClick={tabTracker} className={`font-semibold cursor-pointer`}><Link to={`/about/`} className={ (tab == "About" ? "border-b-2 border-b-orange-500 hover:border-b-orange-600" : "") }>About</Link></li>
                     </div>
                     <div className="siteUtils flex space-x-2 items-center">
