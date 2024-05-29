@@ -10,6 +10,7 @@ import { Home } from './components/Home';
 import { Shop } from './components/Shop';
 import { About } from './components/About';
 import { ErrorPage } from './components/ErrorPage';
+import { ProductsCards } from './components/ProductsCards';
 
 const router = createBrowserRouter([
   {
@@ -24,23 +25,23 @@ const router = createBrowserRouter([
         children : [
           {
             index: true, 
-            element: <h2>TestAAA </h2>,
+            element: <ProductsCards/>,
           },
           {
             path: "electronics/",
-            element: <h1>Pending</h1>,
+            element: <ProductsCards/>,
           },
           {
-            path: "jewelry/",
-            element: <h1>Pending</h1>,
+            path: "jewelery/",
+            element: <ProductsCards/>,
           },
           {
-            path: "mens-clothing",
-            element: <h1>Pending</h1>,
+            path: "mens clothing",
+            element: <ProductsCards/>,
           },
           {
-            path: "womens-clothing",
-            element: <h1>Pending</h1>,
+            path: "womens clothing",
+            element: <ProductsCards/>,
           },
         ]
       },

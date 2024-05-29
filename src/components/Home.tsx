@@ -1,4 +1,4 @@
-import { Link, Navigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 export { Home };
 
 function Home({}){
@@ -7,19 +7,19 @@ function Home({}){
             <div className="flex flex-col space-y-4">
                 <div className="flex flex-row space-x-4">
                     <div className="size-52 border-2 bg-white flex justify-center items-center font-semibold text-xl">
-                        <Link to="/shop/electronics" state={{tab: "E"}}><h2>Electronics</h2></Link>
+                        <Link to="/shop/electronics" state={{tab: "electronics"}}><h2>Electronics</h2></Link>
                     </div>
                     <div className="size-52 border-2 bg-white flex justify-center items-center font-semibold text-xl">
-                        <Link to="/shop/jewelry"><h2>Jewelry</h2></Link>
+                        <Link to="/shop/jewelery" state={{tab: "jewelery"}}><h2>Jewelry</h2></Link>
                         </div>
                 </div>
 
                 <div className="flex flex-row space-x-4">
                     <div className="size-52 border-2 bg-white flex justify-center items-center font-semibold text-xl">
-                        <Link to="/shop/mens-clothing"><h2>Men's Clothing</h2></Link>
+                        <Link to="/shop/mens clothing" state={{tab: "mens clothing"}}><h2>Men's Clothing</h2></Link>
                     </div>
                     <div className="size-52 border-2 bg-white flex justify-center items-center font-semibold text-xl">
-                        <Link to="/shop/womens-clothing"><h2>Women's Clothing</h2></Link>
+                        <Link to="/shop/womens clothing" state={{tab: "womens clothing"}}><h2>Women's Clothing</h2></Link>
                     </div>
                 </div>
             </div>
