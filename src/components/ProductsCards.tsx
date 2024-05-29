@@ -4,7 +4,7 @@ export { ProductsCards };
 
 function ProductsCards({}){
     const [limit, currTab] = useOutletContext();
-
+    console.log(limit, currTab, '<---------')
     /*
     //        fetchProducts('https://fakestoreapi.com/products', limit, currTab);
 
