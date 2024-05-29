@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { Button } from "./Button"
 export { Card }
 
-function Card({id, img, title="shoes", price=100, quantity=1, className=""}){
+function Card({cb, id, img, title="shoes", price=100, quantity=1, className=""}){
     const [quant, setQuant] = useState(quantity);
 
     const incrementQuant = (e) => {
@@ -16,6 +16,31 @@ function Card({id, img, title="shoes", price=100, quantity=1, className=""}){
             return;
         }
     }
+
+    const addToCart = (e) => {
+        let unique = true;
+        const productCard = {
+            id: id,
+            title: title,
+            img: img,
+            price: price,
+            quantity: quant,
+            total: (price * quant),
+        }
+
+        for(let i = 0; i < cb.cartProducts.length; i++){
+            if(cb.cartProducts[i]['id'] == productCard.id){
+                unique = false;
+            }
+        }
+
+        if(unique){
+            let newArr = cb.cartProducts.slice();
+            newArr.push(productCard);
+            cb.setCartProducts(newArr);
+        }
+    }
+
 
     return(
         <div id={id} className={"card card-compact w-60 h-fit bg-base-100 shadow-xl" + className}>
@@ -31,7 +56,7 @@ function Card({id, img, title="shoes", price=100, quantity=1, className=""}){
                             <span data-testid="quantityDisplay" className="text-primary font-semibold">{quant}</span>
                             <Button text="+" className="text-primary size-4 hover:border-primary hover:bg-slate-300" onClick={incrementQuant}/>
                         </div>
-                        <button className="btn btn-primary w-20">Add to Cart</button>
+                        <Button onClick={addToCart} className=" btn-primary text-white w-20" text="Add to Cart" />
                     </div>
               </div>
         </div>

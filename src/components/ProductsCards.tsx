@@ -1,12 +1,14 @@
 import { useOutletContext } from "react-router-dom";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { Card } from "./Card";
+import { CartProductsContext } from "./Root";
 export { ProductsCards };
 
 function ProductsCards({}){
     const [limit, currTab] = useOutletContext();
     const [data, setData] = useState(null);
     const [error, setError] = useState(null);
+    const {cartProducts, setCartProducts} = useContext(CartProductsContext);
 
     const fetchProducts = async (url, limit=false, category=false) => {
         try {
@@ -38,7 +40,7 @@ function ProductsCards({}){
         <div className="flex p-4 justify-start flex-wrap overflow-y-scroll gap-4 h-full">
             {
                 data &&
-                data.map((obj) => <Card key={obj.id} id={obj.id} title={obj.title} img={obj.image} price={obj.price} quantity={1} />)
+                data.map((obj) => <Card cb={{cartProducts, setCartProducts}} key={obj.id} id={obj.id} title={obj.title} img={obj.image} price={obj.price} quantity={1} />)
             }
             {
                 error &&

@@ -1,7 +1,6 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { Link, useLocation, Outlet} from "react-router-dom";
 
-import { Card } from "./Card";
 import { Select } from "./Select";
 export { Shop };
 
@@ -9,6 +8,7 @@ function Shop({}){
     const location = useLocation();
     const currTab = (location.state ? location.state.tab : "all");
     const [limit, setLimit] = useState("4");
+
     
     const handleLimitOpt = (e) => {
         setLimit(e.target.value);
