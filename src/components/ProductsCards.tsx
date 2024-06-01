@@ -8,7 +8,7 @@ function ProductsCards({}){
     const [limit, currTab] = useOutletContext();
     const [data, setData] = useState(null);
     const [error, setError] = useState(null);
-    const {cartProducts, setCartProducts} = useContext(CartProductsContext);
+    const {cartProducts, setCartProducts} = useContext(CartProductsContext) || {"n": true, "s": false   };
 
     const fetchProducts = async (url, limit=false, category=false) => {
         try {

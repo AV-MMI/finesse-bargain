@@ -1,6 +1,10 @@
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import { Button } from "./Button"
 export { Card }
+
+
+
+// add way to add to cart without relying on context look at cartModal and lineCard
 
 function Card({cb, id, img, title="shoes", price=100, quantity=1, className=""}){
     const [quant, setQuant] = useState(quantity);
@@ -18,7 +22,6 @@ function Card({cb, id, img, title="shoes", price=100, quantity=1, className=""})
     }
 
     const addToCart = (e) => {
-        let unique = true;
         const productCard = {
             id: id,
             title: title,
@@ -28,22 +31,22 @@ function Card({cb, id, img, title="shoes", price=100, quantity=1, className=""})
             total: (price * quant),
         }
 
-        for(let i = 0; i < cb.cartProducts.length; i++){
-            if(cb.cartProducts[i]['id'] == productCard.id){
-                unique = false;
+        let isUnique = true;
+        for(let i = 0; i < cartProducts.length; i++){
+            if(cartProducts[i]['id'] == productCard.id){
+                isUnique = false;
             }
         }
 
-        if(unique){
-            let newArr = cb.cartProducts.slice();
-            newArr.push(productCard);
-            cb.setCartProducts(newArr);
+        if(isUnique){
+            setCartProducts(cartProducts.concat([productCard]))
         }
+
     }
 
 
     return(
-        <div id={id} className={"card card-compact w-60 h-fit bg-base-100 shadow-xl" + className}>
+        <div id={id} key={id} className={"card card-compact w-60 h-fit bg-base-100 shadow-xl" + className}>
             <img src={img} alt={`${title} image`} />
               <div className="card-body flex flex-col items-center">
                     <div className="flex items-center justify-around gap-4">

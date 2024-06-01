@@ -1,6 +1,6 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { Link, useLocation, Outlet} from "react-router-dom";
-
+import { CartProductsContext } from "./Root";
 import { Select } from "./Select";
 export { Shop };
 
@@ -8,6 +8,7 @@ function Shop({}){
     const location = useLocation();
     const currTab = (location.state ? location.state.tab : "all");
     const [limit, setLimit] = useState("4");
+    const {cartProducts, setCartProducts} = useContext(CartProductsContext);
 
     
     const handleLimitOpt = (e) => {

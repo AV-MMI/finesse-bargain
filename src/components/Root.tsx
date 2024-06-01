@@ -4,12 +4,36 @@ import { Link, Outlet } from "react-router-dom";
 import { CartModal } from "./CartModal";
 export { Root }
 
-export const CartProductsContext = createContext(null);
+export const CartProductsContext = createContext({
+    cartItems: [],
+    addToCart: () => {},
+    removeFromCart: () => {},
+});
 
 function Root({}){
     let [isDark, setDarkTheme] = useState(false);
     let [tab, setTab] = useState("Home");
     let [cartProducts, setCartProducts] = useState([]);
+
+    const addToCart = (product) => {
+        const tempArr = cartProducts;
+        let isUnique = true;
+
+        for(let i = 0; i < cartProducts.length; i++){
+            if(cartProducts[i].id == product.id){
+                isUnique = false;
+            }
+        }
+
+        if(isUnique){
+            setCartProducts(tempArr.concat([product]));
+        }
+    }
+
+    const removeFromCart = (product) => {
+        //obtain id
+        // form new arr without the passed one
+    }
         
     const tabTracker = (e) => {
         setTab(e.target.textContent);
@@ -17,7 +41,6 @@ function Root({}){
 
     const openModal = (e) => {
         document.getElementById('my_modal_1').showModal();
-        console.log(cartProducts, 'pisaleeee');
     }
     
     return ( 
@@ -32,8 +55,10 @@ function Root({}){
                     </div>
                     <div className="siteUtils flex space-x-2 items-center">
                         <li>
-                            <Button text="Cart" onClick={openModal} className="text-cyan-300 hover:border-[#a2d3ff] hover:text-cyan-400 pl-5 pr-5 hover:bg-[#d5ebff] bg-[#EEF7FF] pt-1 pb-1" />
-                            <CartModal></CartModal>
+                            <CartProductsContext.Provider value={{cartProducts, addToCart, removeFromCart}}>
+                                <Button text={"Cart: " + (cartProducts ? cartProducts.length : 0)} onClick={openModal} className="text-cyan-300 hover:border-[#a2d3ff] hover:text-cyan-400 pl-5 pr-5 hover:bg-[#d5ebff] bg-[#EEF7FF] pt-1 pb-1" />
+                                <CartModal />
+                            </CartProductsContext.Provider>
 
                         </li>
                         <li>
