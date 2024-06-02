@@ -8,6 +8,7 @@ export const CartProductsContext = createContext({
     cartProducts: [],
     addToCart: () => {},
     removeFromCart: () => {},
+    editProductInCart: () => {},
 });
 
 function Root({}){
@@ -40,10 +41,21 @@ function Root({}){
                 newArr.push(cartProducts[i]);
             }
         }
-
         setCartProducts(newArr);
     }
-        
+    
+    const editProductInCart = (product, [prop, val]) => {
+        const newProductsArr = cartProducts.slice();
+
+        for(let i = 0; i < newProductsArr.length; i++){
+            if(product.id == newProductsArr[i].id){
+                newProductsArr[i][prop] = val;
+            }
+        }
+
+        setCartProducts(newProductsArr);
+    }
+
     const tabTracker = (e) => {
         setTab(e.target.textContent);
     }
@@ -64,7 +76,7 @@ function Root({}){
                     </div>
                     <div className="siteUtils flex space-x-2 items-center">
                         <li>
-                            <CartProductsContext.Provider value={{cartProducts, addToCart, removeFromCart}}>
+                            <CartProductsContext.Provider value={{cartProducts, addToCart, removeFromCart, editProductInCart}}>
                                 <Button text={"Cart: " + (cartProducts ? cartProducts.length : 0)} onClick={openModal} className="text-cyan-300 hover:border-[#a2d3ff] hover:text-cyan-400 pl-5 pr-5 hover:bg-[#d5ebff] bg-[#EEF7FF] pt-1 pb-1" />
                                 <CartModal />
                             </CartProductsContext.Provider>
