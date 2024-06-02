@@ -4,6 +4,7 @@ import { LineCard } from "../components/LineCard.tsx";
 import { describe, it, expect } from 'vitest';
 import '@testing-library/jest-dom';
 import userEvent from "@testing-library/user-event";
+import { CartProductsContext } from "../components/Root.tsx";
 
 describe("LineCard Component", ()=>{
 
@@ -45,20 +46,31 @@ describe("LineCard Component", ()=>{
         expect(screen.getByText(/edit/)).toBeVisible();
     })  
 
-    it("render input when button edit is clicked", ()=>{
-        render(<LineCard {...mockProduct}/>);
-        expect(false).toBe(true);
+    it("render input when button edit is clicked", async ()=>{
+        const cartProducts = [];
+        const removeFromCart = () => {};
+
+        render(
+            <CartProductsContext.Provider value={{cartProducts, removeFromCart}}>
+                <LineCard {...mockProduct}/>
+            </ CartProductsContext.Provider>
+        )
+
+        const editBtn = screen.queryByText(/edit/i);
+        const user = userEvent.setup();
+
+        await user.click(editBtn);
+        const input = screen.queryByTestId("quantityInput");
+
+        expect(input).toBeVisible();
     })
 
     it("render remove button", ()=>{
         render(<LineCard {...mockProduct}/>);
         
-        let user = userEvent.setup();
-        let editBtn = screen.getByText(/edit/);
+        let removeBtn = screen.getByText(/remove/);
 
-        user.click(editBtn);
-
-        expect(screen.getByRole("in"))
+        expect(removeBtn).toBeVisible();
     })
 
 })

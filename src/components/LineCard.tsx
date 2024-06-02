@@ -23,8 +23,8 @@ function LineCard({deleteMethod, key, title, img, price="100", quantity="2", id=
             removeFromCart(ownProductObj);
             addToCart(ownProductObj);
         }
-        
         setEdit(!edit);
+
     }
 
     const handleInputChange = (e) => {
@@ -47,11 +47,11 @@ function LineCard({deleteMethod, key, title, img, price="100", quantity="2", id=
                         <h2 className="card-title text-xs">title: {(title.slice(0, 20) + "...")}</h2>
                         <span className="text-xs font-semibold">price: {price * quant}$</span>
                         {!edit && <span className="text-xs font-semibold">quantity: {quant}</span>}
-                        {edit && (<input type="number" defaultValue={quant} onChange={handleInputChange} className="w-16"/>)}
+                        {edit && (<input data-testid="quantityInput" type="number" defaultValue={quant} onChange={handleInputChange} className="w-16"/>)}
                     </div>
                     <div className="flex gap-2 max-w-[30%] min-w-[30%] justify-center">
                         <Button text="edit" className={"w-10 " + (edit ? "edit" : "")} onClick={handleEdit} />
-                        <Button text="X" className="btn-outline btn-warning" onClick={handleDelete}/>
+                        <Button text="remove" className="btn-outline btn-warning" onClick={handleDelete}/>
                     </div>
                 </div>
             </div>

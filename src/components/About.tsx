@@ -14,8 +14,6 @@ function About({}){
 
         <div className="flex flex-col mt-5 min-w-[60vw]">
             <h2 className="text-orange-500 text-3xl font-semibold p-0">Our Mission</h2>
-            <LineCard></LineCard>
-        
             <ul className="p-0 m-0">
                 <li className="list-disc marker:text-orange-500">To offer a curated selection of top-quality products at unbeatable prices.</li>
                 <li className="list-disc marker:text-orange-500">To provide a seamless and enjoyable shopping experience for our customers.</li>
