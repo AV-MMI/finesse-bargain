@@ -4,13 +4,19 @@ import { Card } from "./Card";
 import { CartProductsContext } from "./Root";
 export { ProductsCards };
 
+interface fetchProductTypes {
+    url: string;
+    limit: number;
+    category: string;
+}
+
 function ProductsCards({}){
     const [limit, currTab] = useOutletContext();
     const [data, setData] = useState(null);
     const [error, setError] = useState(null);
     const {cartProducts, addToCart}= useContext(CartProductsContext);
 
-    const fetchProducts = async (url, limit=false, category=false) => {
+    const fetchProducts = async (url, limit=false, category=false):fetchProductTypes => {
         try {
             const response = await fetch(url + (category !== false ? `/category/${category}` : "") + (limit !== false ? `?limit=${limit}` : ""))
             const data = await response.json();

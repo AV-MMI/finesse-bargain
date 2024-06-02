@@ -4,7 +4,7 @@ import { LineCard } from "./LineCard";
 import { CartProductsContext } from "./Root";
 export { CartModal }
 
-const getTotalPrice = (cartP) => {
+const getTotalPrice = (cartP:Array<object>) => {
     let acc = 0;
     for(let i = 0; i < cartP.length; i++){
         acc += (cartP[i].price * cartP[i].quantity);
@@ -16,9 +16,6 @@ function CartModal({}){
     const {cartProducts, removeFromCart, editProductInCart} = useContext(CartProductsContext);
     const totalPrice = getTotalPrice(cartProducts).toFixed(2);
 
-    const handleCheckout = (e) => {
-        
-    }
     return (
         <dialog id="my_modal_1" className="modal">
             <div className="modal-box">

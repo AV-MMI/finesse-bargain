@@ -3,7 +3,19 @@ import { Button } from "./Button";
 import { CartProductsContext } from "./Root";
 export { LineCard }
 
-function LineCard({deleteMethod, editMethod, key, title, img, price="100", quantity="2", id=0}){
+interface lineCardProps {
+    deleteMethod: () => void;
+    editMethod: () => void; 
+    key: number;
+    title: string;
+    img: string;
+    price: number;
+    quantity: number;
+    id: number;
+
+}
+
+function LineCard({deleteMethod, editMethod, key, title, img, price, quantity, id} : lineCardProps){
     const [edit, setEdit] = useState(false);
     const [quant, setQuant] = useState(quantity);
     const {cartProducts, addToCart, removeFromCart} = useContext(CartProductsContext);

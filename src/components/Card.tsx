@@ -2,11 +2,20 @@ import React, { useContext, useState } from 'react'
 import { Button } from "./Button"
 export { Card }
 
+interface CardProps {
+    addToCartMethod: () => void;
+    id: number;
+    img: string;
+    title: string;
+    price: number;
+    quantity: number;
+    className: string;
 
+}
 
 // add way to add to cart without relying on context look at cartModal and lineCard
 
-function Card({addToCartMethod, id, img, title="shoes", price=100, quantity=1, className=""}){
+function Card({addToCartMethod, id, img, title, price, quantity, className}: CardProps){
     const [quant, setQuant] = useState(quantity);
 
     const incrementQuant = (e) => {
