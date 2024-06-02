@@ -8,7 +8,7 @@ function Shop({}){
     const location = useLocation();
     const currTab = (location.state ? location.state.tab : "all");
     const [limit, setLimit] = useState("4");
-    const {cartProducts, setCartProducts} = useContext(CartProductsContext);
+    const {cartProducts, addToCart} = useContext(CartProductsContext);
 
     
     const handleLimitOpt = (e) => {
@@ -48,7 +48,9 @@ function Shop({}){
                     </Select>
                 </div>
                 <div data-testid="productsDisplay" className=" bg-slate-200 min-w-[100%] max-w-[100%] h-[90%]">
-                    <Outlet context={[limit, currTab]} />
+                    <CartProductsContext.Provider value={{cartProducts, addToCart}}>
+                        <Outlet context={[limit, currTab]} />
+                    </CartProductsContext.Provider>
                 </div>
             </div>
         </div>

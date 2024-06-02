@@ -4,22 +4,17 @@ import { LineCard } from "./LineCard";
 import { CartProductsContext } from "./Root";
 export { CartModal }
 
+const getTotalPrice = (cartP) => {
+    let acc = 0;
+    for(let i = 0; i < cartP.length; i++){
+        acc += (cartP[i].price * cartP[i].quantity);
+    }
+
+    return acc;
+}
 function CartModal({}){
     const {cartProducts, removeFromCart} = useContext(CartProductsContext);
-
-    const handleProductDelete = (e) => {
-    }
-
-    const getTotalPrice = (cartP) => {
-        let acc = 0;
-        for(let i = 0; i < cartP.length; i++){
-            acc += (cartP[i].price * cartP[i].quantity);
-        }
-
-        return acc;
-    }
-
-    const totalPrice = getTotalPrice(cartProducts);
+    const [totalPrice, setTotalPrice] = useState(getTotalPrice(cartProducts));
 
     const handleCheckout = (e) => {
         
@@ -30,9 +25,9 @@ function CartModal({}){
                 <h3 className="font-bold text-lg">Cart</h3>
                 <p className="py-4">Press ESC key or click the button below to close</p>
                 
-                <div className="lineProducts space-y-16 h-96 overflow-y-scroll bg-slate-200">
+                <div className="lineProducts space-y-16 h-96 overflow-y-scroll bg-slate-200 p-4">
                     {
-                      cartProducts.map((x) => <LineCard deleteMethod={handleProductDelete} key={x.id} {...x} />)
+                      cartProducts.map((x) => <LineCard deleteMethod={removeFromCart} key={x.id} {...x} />)
                     }
                 </div>
 

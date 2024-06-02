@@ -5,7 +5,7 @@ import { CartModal } from "./CartModal";
 export { Root }
 
 export const CartProductsContext = createContext({
-    cartItems: [],
+    cartProducts: [],
     addToCart: () => {},
     removeFromCart: () => {},
 });
@@ -33,6 +33,15 @@ function Root({}){
     const removeFromCart = (product) => {
         //obtain id
         // form new arr without the passed one
+        const newArr = [];
+
+        for(let i = 0; i < cartProducts.length; i++){
+            if(cartProducts[i]['id'] !== product.id){
+                newArr.push(cartProducts[i]);
+            }
+        }
+
+        setCartProducts(newArr);
     }
         
     const tabTracker = (e) => {
@@ -68,7 +77,7 @@ function Root({}){
                 </ul>
             </nav>
             <main className="max-h-[90vh] min-h-[90vh] min-w-screen bg-cyan-200">
-                <CartProductsContext.Provider value={{cartProducts, setCartProducts}}>
+                <CartProductsContext.Provider value={{cartProducts, addToCart}}>
                     <Outlet />
                 </CartProductsContext.Provider>
             </main>

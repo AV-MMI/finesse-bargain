@@ -6,7 +6,7 @@ export { Card }
 
 // add way to add to cart without relying on context look at cartModal and lineCard
 
-function Card({cb, id, img, title="shoes", price=100, quantity=1, className=""}){
+function Card({addToCartMethod, id, img, title="shoes", price=100, quantity=1, className=""}){
     const [quant, setQuant] = useState(quantity);
 
     const incrementQuant = (e) => {
@@ -22,7 +22,7 @@ function Card({cb, id, img, title="shoes", price=100, quantity=1, className=""})
     }
 
     const addToCart = (e) => {
-        const productCard = {
+        const productObj = {
             id: id,
             title: title,
             img: img,
@@ -31,17 +31,7 @@ function Card({cb, id, img, title="shoes", price=100, quantity=1, className=""})
             total: (price * quant),
         }
 
-        let isUnique = true;
-        for(let i = 0; i < cartProducts.length; i++){
-            if(cartProducts[i]['id'] == productCard.id){
-                isUnique = false;
-            }
-        }
-
-        if(isUnique){
-            setCartProducts(cartProducts.concat([productCard]))
-        }
-
+        addToCartMethod(productObj);
     }
 
 
