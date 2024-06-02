@@ -26,6 +26,7 @@ function CartModal({}){
                 <p className="py-4">Press ESC key or click the button below to close</p>
                 
                 <div className="lineProducts space-y-16 h-96 overflow-y-scroll bg-slate-200 p-4">
+                    <span>Products</span>
                     {
                       cartProducts.map((x) => <LineCard deleteMethod={removeFromCart} key={x.id} {...x} />)
                     }
